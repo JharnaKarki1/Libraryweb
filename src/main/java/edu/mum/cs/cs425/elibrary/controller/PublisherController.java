@@ -1,9 +1,13 @@
 package edu.mum.cs.cs425.elibrary.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -36,12 +40,18 @@ public class PublisherController {
 	        model.addAttribute("publisher", newPublisher);
 	        return "publisher/new";
 	    }
+	
 	 @PostMapping(value = {"/new"}) // PRG: Post-Redirect-Get
-	    public String addNewPublisher(Publisher publisher) {
-	       
-	           
-	            return "redirect:/publisher/list";
+	    public String addNewPublisher(@Valid @ModelAttribute("publisher") Publisher publisher,
+	          BindingResult bindingResult, Model model) {
+	        if(bindingResult.hasErrors()) {
+	            model.addAttribute("publisher", publisher);
+	            model.addAttribute("errors", bindingResult.getAllErrors());
+	            return "publisher/new";
+	        }
+	        publisherService.addNewPublisher(publisher);
+	        return "redirect:/publisher/list";
 	 }
-	    
+	 
 
 }
