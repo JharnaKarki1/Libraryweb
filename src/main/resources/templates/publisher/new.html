@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Fairfield Library website - About</title>
+</head>
+<body>
+    <header th:replace="fragments/header :: header" >
+    
+</header>
+    <main>
+    <h1>List of our Publishers</h1>
+    <div>
+      <p><a href="/publisher/new">Add New Publisher</a></p>
+    </div>
+    <form method="post" action="/publisher/new" th:object="${publisher}">
+        <fieldset>
+          <div>
+            <label>Publisher Name*</label>
+          </div>
+          <div>
+            <input name="name" type="text" required >
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Primary Address</legend>
+          <div>
+            <label>Street</label>
+          </div>
+          <div>
+            <input name="street" type="text" >
+          </div>
+          
+          
+        </fieldset>
+        <div style="margin-top: 1em;">
+          <a class="std-lnk-btn" href="/fairfieldlibrary/publisher/list">Cancel</a>
+          <input class="std-btn" type="reset" value="Reset">
+          <input class="std-btn" type="submit" value="Add Publisher">
+        </div>
+      </form>
+  </main>
+</body>
+</html>

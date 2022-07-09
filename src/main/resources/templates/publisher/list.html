@@ -27,6 +27,10 @@
         <tr th:each="publisher, counter : ${publishers}">
           <th th:text="${counter.count}+${'.'}"></th>
          <td th:text="${publisher.name}"></td>
+         <td th:text="${publisher.primaryAddress}">
+           
+          
+          </td>
         </tr>
       </tbody>
     </table>

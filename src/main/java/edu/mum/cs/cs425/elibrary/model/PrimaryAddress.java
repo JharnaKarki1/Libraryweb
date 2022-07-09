@@ -22,13 +22,67 @@ public class PrimaryAddress {
     private String zipCode;
 
     @OneToOne(mappedBy = "primaryAddress")
-    @JsonIgnore
+  
     private Publisher publisher;
 
-
+//    public PrimaryAddress(Integer addressId, String street, String city, String state, String zipCode) {
+//        this.addressId = addressId;
+//        this.street = street;
+//        this.city = city;
+//        this.state = state;
+//        this.zipCode = zipCode;
+//    }
+//
+//    public PrimaryAddress() {
+//    }
+//
+//    public Integer getAddressId() {
+//        return addressId;
+//    }
+//
+//    public void setAddressId(Integer addressId) {
+//        this.addressId = addressId;
+//    }
+//
+//    public String getStreet() {
+//        return street;
+//    }
+//
+//    public void setStreet(String street) {
+//        this.street = street;
+//    }
+//
+//    public String getCity() {
+//        return city;
+//    }
+//
+//    public void setCity(String city) {
+//        this.city = city;
+//    }
+//
+//    public String getState() {
+//        return state;
+//    }
+//
+//    public void setState(String state) {
+//        this.state = state;
+//    }
+//
+//    public String getZipCode() {
+//        return zipCode;
+//    }
+//
+//    public void setZipCode(String zipCode) {
+//        this.zipCode = zipCode;
+//    }
+//    @Override
+//    public String toString() {
+//        return String.format("{AddressId: %d, Street: %s, City: %s, State: %s, ZipCode: %s}"
+//                , addressId, street, city, state, zipCode);
+//    }
     @Override
     public String toString() {
-        return String.format("%s<br>%s %s %s"
+        return String.format("%s %s %s %s"
                 , street, city, state, zipCode);
     }
 }
